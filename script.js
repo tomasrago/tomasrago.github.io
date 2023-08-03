@@ -30,7 +30,7 @@ function getPlayerChoice(){
 
   }
 
-  console.log(`You chose ${playerInput.toLowerCase()}!`);
+  console.log(`You chose ${playerChoice.toLowerCase()}!`);
   return playerChoice;
   
 
