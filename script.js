@@ -115,12 +115,13 @@ function playRound(){
 }
 
 function game(){
-  const numberOfRoundsToWin = (parseInt(prompt("First to:","2")) || 2);
+  const numberOfRoundsToWin = getNumberOfRounds();
+  const numberOfRoundsToPlay = numberOfRoundsToWin * 2 - 1;
 
   let playerScore = 0;
   let computerScore = 0;
 
-  for(let i = 0; i < numberOfRoundsToWin; i++){
+  for(let i = 0; i < numberOfRoundsToPlay; i++){
     let playerHasWon = playRound();
 
     while(playerHasWon == undefined){
@@ -147,3 +148,34 @@ function game(){
   
 }
 
+function getNumberOfRounds(){
+
+  let numberOfRounds = prompt("First to:", "2");
+
+  while(checkValidRounds(numberOfRounds)==false){
+    numberOfRounds = prompt("First to:", "2");
+  }
+
+  return numberOfRounds;
+  
+}
+
+function checkValidRounds(string){
+
+  let parsedInput = parseInt(string);
+
+  if(isNaN(parsedInput)){
+    console.log("Please enter a number.")
+    return false;
+  }
+
+  else if(parsedInput <= 0){
+    console.log("Please enter a valid number.")
+    return false;
+  }
+  else{
+    return true;
+  }
+
+
+}
