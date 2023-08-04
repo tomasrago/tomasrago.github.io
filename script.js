@@ -31,7 +31,7 @@ function getPlayerChoice(){
   }
 
   console.log(`You chose ${playerChoice.toLowerCase()}!`);
-  return playerChoice;
+  return playerChoice.toLowerCase();
   
 
 }
@@ -54,4 +54,55 @@ function checkForValidInput(string){
   }
 
 
+}
+
+function checkWinningChoice(playerChoice, computerChoice){
+  
+  const choicesMessage = `You chose ${playerChoice} and the computer chose ${computerChoice}.`;
+  const winMessage = `${choicesMessage} You win!`;
+  const loseMessage = `${choicesMessage} You lose!`;
+  const drawMessage = `${choicesMessage} It's a draw!`;
+
+  if(playerChoice === computerChoice){
+    console.log(drawMessage);
+    return;
+  }
+  else{
+    switch(playerChoice){
+      case "rock":
+        if(computerChoice === "paper"){
+          console.log(loseMessage);
+          return false;
+        } 
+        else{
+          console.log(winMessage);
+          return true;
+        } 
+
+      case "paper":
+        if(computerChoice === "scissors"){
+          console.log(loseMessage);
+          return false;
+        } 
+        else{
+          console.log(winMessage);
+          return true;
+        } 
+        
+      case "scissors":
+        if(computerChoice === "rock"){
+          console.log(loseMessage);
+          return false;
+        } 
+        else{
+          console.log(winMessage);
+          return true;
+        } 
+        
+      default:
+        console.log("Invalid player choice.");
+
+
+    }
+  }
 }
