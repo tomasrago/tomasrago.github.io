@@ -1,0 +1,127 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*border: 1px solid black;*/
+}
+
+body{
+  min-height: 100vh;
+  font-size: xx-large;
+  background-color: rgb(245,244,240);
+}
+
+body{
+  font-family: 'Nunito', Courier, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  
+}
+
+button{
+cursor: pointer;
+}
+
+.letter-button{
+  font-size: 18px;
+  
+  padding: 18px 24px;
+  border: 3px solid black;
+  border-radius: 40px ;
+
+}
+
+h1, h2, .scoreboard{
+  text-align: center;
+}
+
+.main-container{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+
+  align-items: center;
+
+  gap: 20px;
+  
+
+}
+#title{
+  font-size: 74px;
+}
+
+.game-scene{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+  
+}
+
+.ui{
+  display: flex;
+  gap: 20px;
+
+}
+
+.game-ui{
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+}
+
+.settings-bar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 50px;
+
+}
+
+.choice-box{
+
+  height: 200px;
+  width: 200px;
+
+}
+
+.choice-bar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  
+}
+
+.choice-button{
+  background-color: rgb(245,244,240);
+  border: none;
+  border-radius: 60px;
+  width: 120px;
+  height: 120px;
+}
+
+.button-image{
+  width: 100%;
+}
+
+
+#play-button{
+  font-size: 28px;
+  font-weight: bold;
+
+  width: 160px;
+  height: 90px;
+}
+
+
+
+
+
