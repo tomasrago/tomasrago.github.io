@@ -1,3 +1,112 @@
+const score = document.querySelector(".scoreboard");
+const message = document.querySelector("#message");
+const choiceBar = document.querySelector(".choice-bar");
+const settingsBar = document.querySelector(".settings-bar");
+const choiceButtons = document.querySelectorAll(".choice-button");
+const playButton = document.querySelector("#play-button");
+const bestOfButton = document.querySelector("#bestof-button");
+const playerPortrait = document.querySelector("#player-box");
+const computerPortrait = document.querySelector("#computer-box");
+
+let numberOfRoundsToWin = (+bestOfButton.innerText.slice(-1) + 1)/2;
+
+let playerScore = 0;
+let computerScore = 0;
+
+let playerChoice = "";
+let computerChoice = "";
+
+let round = 1;
+
+/*window.addEventListener("click", ( ) =>{
+  const body = document.querySelector("body");
+  body.setAttribute("style", `background-color: rgb(${random(254)},${random(254)},${random(254)});`);
+})*/
+
+bestOfButton.addEventListener("click", () => {
+
+  switch (bestOfButton.innerText){
+    case "Best of 5":
+      bestOfButton.innerText = "Best of 3";
+      numberOfRoundsToPlay = +bestOfButton.innerText.slice(-1);
+      break;
+    case "Best of 3":
+      bestOfButton.innerText = "Best of 1";
+      numberOfRoundsToPlay = +bestOfButton.innerText.slice(-1);
+      break;
+    case "Best of 1":
+      bestOfButton.innerText = "Best of 5";
+      numberOfRoundsToPlay = +bestOfButton.innerText.slice(-1);
+      break;
+    
+    return;
+  }
+
+
+})
+
+playButton.addEventListener("click", () =>{
+
+  score.innerText = `${playerScore} - ${computerScore}`;
+  message.innerText = `Press a button!`;
+
+  settingsBar.setAttribute("style", "display: none;");
+  choiceBar.setAttribute("style", "display: flex;");
+  numberOfRoundsToWin = (+bestOfButton.innerText.slice(-1) + 1)/2;
+
+
+})
+
+choiceButtons.forEach((btn) => {
+  btn.addEventListener("click", function(e){
+    console.log(e.target);
+    playerChoice = e.target.dataset.type;
+    play();
+  });
+})
+
+
+function play(){
+
+  computerChoice = getComputerChoice();
+
+  playerPortrait.setAttribute("src", `img/${playerChoice}.jpg`);
+
+  computerPortrait.setAttribute("src", `img/${computerChoice}.jpg`);
+
+  let playerWins = checkWinningChoice(playerChoice, computerChoice);
+  if(playerWins == undefined) return;
+  if(playerWins) playerScore++;
+  if(!playerWins) computerScore++;
+
+  score.innerText = `${playerScore} - ${computerScore}`;
+
+  if(playerScore == numberOfRoundsToWin){
+
+    message.innerText = "You win!";
+
+    choiceBar.setAttribute("style", "display: none;");
+    settingsBar.setAttribute("style", "display: flex;");
+    playerScore = 0;
+    computerScore = 0;
+
+  }
+  
+  if(computerScore == numberOfRoundsToWin){
+    message.innerText = "You lose!";
+
+    choiceBar.setAttribute("style", "display: none;");
+    settingsBar.setAttribute("style", "display: flex;");
+
+    playerScore = 0;
+    computerScore = 0;
+  }
+
+
+
+}
+
+
 function random(number){
   return Math.floor(Math.random() * number);
 }
@@ -18,43 +127,10 @@ function getComputerChoice(){
 
   }
 
-   
 }
 
-function getPlayerChoice(){
-  let playerChoice;
-
-  while(checkForValidInput(playerChoice) == false){
-
-    playerChoice = prompt("Enter choice:", "");
-
-  }
-
-  console.log(`You chose ${playerChoice.toLowerCase()}!`);
-  return playerChoice.toLowerCase();
-  
-
-}
-
-function checkForValidInput(string){
-
-  if(string == undefined){
-    console.log("Please enter your choice:")
-    return false;
-  }
-
-  let lowerCaseInput = string.trim().toLowerCase();
-
-  if(lowerCaseInput === "rock" || lowerCaseInput === "paper" || lowerCaseInput === "scissors"){
-    return true;
-  }
-  else{
-    console.log("Invalid choice.");
-    return false;
-  }
 
 
-}
 
 function checkWinningChoice(playerChoice, computerChoice){
 
@@ -98,84 +174,11 @@ function checkWinningChoice(playerChoice, computerChoice){
           console.log(winMessage);
           return true;
         } 
-        
-      default:
-        console.log("Invalid player choice.");
+      
 
 
     }
   }
 }
 
-function playRound(){
-  const playerChoice = getPlayerChoice();
-  const computerChoice = getComputerChoice();
 
-  return checkWinningChoice(playerChoice, computerChoice);
-}
-
-function game(){
-  const numberOfRoundsToWin = getNumberOfRounds();
-  const numberOfRoundsToPlay = numberOfRoundsToWin * 2 - 1;
-
-  let playerScore = 0;
-  let computerScore = 0;
-
-  for(let i = 0; i < numberOfRoundsToPlay; i++){
-    let playerHasWon = playRound();
-
-    while(playerHasWon == undefined){
-      playerHasWon = playRound();
-    }
-    
-    if (playerHasWon) playerScore++;
-    else computerScore++;
-
-    console.log(`Player: ${playerScore} | Computer: ${computerScore}`);
-
-    if(playerScore === numberOfRoundsToWin){
-      console.log("Player Wins!");
-      return;
-    }
-    if(computerScore === numberOfRoundsToWin){
-      console.log("Computer wins!");
-      return;
-    }
-
-
-
-  }
-  
-}
-
-function getNumberOfRounds(){
-
-  let numberOfRounds = prompt("First to:", "2");
-
-  while(checkValidRounds(numberOfRounds)==false){
-    numberOfRounds = prompt("First to:", "2");
-  }
-
-  return numberOfRounds;
-  
-}
-
-function checkValidRounds(string){
-
-  let parsedInput = parseInt(string);
-
-  if(isNaN(parsedInput)){
-    console.log("Please enter a number.")
-    return false;
-  }
-
-  else if(parsedInput <= 0){
-    console.log("Please enter a valid number.")
-    return false;
-  }
-  else{
-    return true;
-  }
-
-
-}

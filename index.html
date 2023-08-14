@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito">
 </head>
@@ -18,27 +18,27 @@
         <div class="scoreboard"> Score </div>
         <div class="game-scene">
           <div class="choice-box">
-            <img class="button-image" src="">
+            <img class="button-image" id="player-box" src="">
           </div>
           <div>vs</div>
-          <div class="choice-box">
-            <img class="button-image" src="">
+          <div class="choice-box" >
+            <img class="button-image" id="computer-box" src="">
           </div>
         </div>
-        <h2>Message</h2>
+        <h2 id="message">Message</h2>
         <div class="settings-bar">
           <button class="letter-button" id="play-button"> Play </button>
-          <button class="letter-button"> Best of 5</button>
+          <button class="letter-button" id="bestof-button"> Best of 5</button>
         </div>
         <div class="choice-bar">
-          <button class="choice-button">
-            <img class="button-image" src="img/rock.jpg">
+          <button class="choice-button" data-type="rock" >
+            <img class="button-image" data-type="rock" src="img/rock.jpg">
           </button>
-          <button class="choice-button">
-            <img class="button-image" src="img/paper.jpg">
+          <button class="choice-button" data-type="paper" >
+            <img class="button-image" data-type="paper" src="img/paper.jpg">
           </button>
-          <button class="choice-button">
-            <img class="button-image" src="img/scissors.jpg">
+          <button class="choice-button" data-type="scissors">
+            <img class="button-image" data-type="scissors" src="img/scissors.jpg">
           </button>
         </div>
       </div>
