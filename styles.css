@@ -1,0 +1,106 @@
+body{
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Dosis', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #fefefe;
+
+}
+
+section{
+  flex: 1 0 40%;
+  padding: 4% 15%;
+  background-color: black;
+
+}
+
+.main-container{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.movie-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  margin: 40px 0;
+
+  
+  
+}
+
+.image-wrapper{
+  flex: 0 0 auto;
+  max-width: 350px;
+  
+
+}
+
+img{
+  max-height: 100%;
+  max-width: 100%;
+  
+
+  
+}
+
+p{
+  font-style: italic;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+h2{
+  margin: 0;
+  font-size: 5em;
+  text-align: center;
+}
+
+
+
+
+@media only screen and (max-width: 900px){
+
+  section{
+    padding: 8% 8%;
+  }
+
+  .movie-container{
+    flex-direction: column;
+    gap: 10%;
+  }
+
+  .image-wrapper{
+    flex: 0 0 auto;
+    max-width: 300px;
+  }
+
+  h2{
+    font-size: 4em;
+  }
+
+
+
+}
+
+@media only screen and (min-width:901px) and (max-width: 1200px){
+
+  section{
+    padding: 8% 12%;
+  }
+  .image-wrapper{
+    flex: 0 0 auto;
+    max-width: 250px;
+  }
+
+
+  h2{
+    font-size: 4em;
+  }
+
+
+
+}
